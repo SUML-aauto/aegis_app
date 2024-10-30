@@ -20,10 +20,10 @@
                     {% csrf_token %}
 
                     <label for="username">E-mail:</label>
-                    <input type="email" name="username" maxlength="150" required>
+                    {{ form.username }}
             
                     <label for="password">Password:</label>
-                    <input type="password" name="password" autocomplete="current-password">
+                    {{ form.password }}
                 </div>
             </div>
 
