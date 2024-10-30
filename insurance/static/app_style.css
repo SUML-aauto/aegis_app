@@ -39,9 +39,10 @@ button, .app-button-accent {
 }
 
 .app-back-button {
+    display: block;
     font-size: 0;
     color: transparent;
-    background: url(back.svg);
+    background: url(images/back.svg);
     width: 48px;
     height: 48px;
 }
