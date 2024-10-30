@@ -1,0 +1,249 @@
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    background: #ccc;
+    font-size: 12px;
+    min-height: 100%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    min-height: 64px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 16px;
+}
+
+input, button {
+    font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+button, .app-button-accent {
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.app-title {
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-size: 36px;
+    font-weight: 300;
+    flex-grow: 1;
+    text-align: center;
+}
+
+.app-back-button {
+    font-size: 0;
+    color: transparent;
+    background: url(back.svg);
+    width: 48px;
+    height: 48px;
+}
+
+main {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    align-items: center;
+}
+
+.app-main-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+    flex-grow: 1;
+    max-width: 816px;
+}
+
+.app-main-tiled {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+}
+
+.app-tile-section {
+    background: #fff;
+    filter: drop-shadow(0 0 8px rgba(0, 0, 0, 0.25));
+    padding: 16px;
+    border-radius: 5px;
+}
+
+.app-tile-section > h2 {
+    font-size: 24px;
+    font-weight: 300;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+}
+
+input[type=text] {
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    font-size: 12px;
+}
+
+input[type=radio] {
+    width: 18px;
+    height: 18px;
+    background-color: rgba(0, 0, 0, 0.2);
+    appearance: none;
+    border-radius: 50%;
+    position: relative;
+    margin: 0;
+    margin-right: 6px;
+}
+
+input[type=radio]:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+input[type=radio]:active {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+input[type=radio]:checked::after {
+    content: ' ';
+    width: 8px;
+    height: 8px;
+    background-color: #000;
+    border-radius: 50%;
+    display: block;
+    position: absolute;
+    left: 5px;
+    top: 5px;
+}
+
+.app-form-block {
+    display: grid;
+    grid-template-columns: 130px auto;
+    column-gap: 8px;
+    row-gap: 10px;
+}
+
+.app-form-block > label {
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.app-form-value {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+}
+
+.app-form-value > input[type=text] {
+    flex-grow: 1;
+}
+
+.app-form-value > input[type=radio] + label {
+    margin-right: 8px;
+}
+
+.app-form-unit {
+    padding-left: 8px;
+}
+
+@property --app-gradient-color-1 {
+    syntax: '<color>';
+    initial-value: black;
+    inherits: false;
+}
+
+@property --app-gradient-color-2 {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+.app-button-accent {
+    --app-gradient-color-1: #561d60;
+    --app-gradient-color-2: #561d60;
+    transition: --app-gradient-color-1 0.25s ease-in-out, --app-gradient-color-2 0.25s ease-in-out;
+
+    appearance: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    background: linear-gradient(45deg, var(--app-gradient-color-1), var(--app-gradient-color-2));
+    color: white;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+}
+
+.app-button-submit {
+    align-self: flex-end;
+}
+
+.app-button-accent:hover {
+    --app-gradient-color-1: #7b288a;
+    --app-gradient-color-2: #95229d;
+}
+
+@media screen and (max-width: 780px) {
+    main {
+        align-items: stretch;
+    }
+
+    .app-form-block {
+        display: grid;
+        grid-template-columns: auto;
+    }
+
+    .app-form-block > label {
+        text-align: left;
+        justify-content: start;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    main {
+        align-items: stretch;
+    }
+
+    .app-main-tiled {
+        grid-template-columns: 100%;
+    }
+}
+
+/* home page */
+
+.app-body-homepage {
+    background: url(main.jpg);
+    background-size: cover;
+    background-position: top;
+}
+
+.app-main-homepage-inner {
+    max-width: 384px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+
+.app-main-homepage-about {
+    font-size: 13px;
+}
+
+.app-main-homepage-about > h2 {
+    font-size: 24px;
+    font-weight: 300;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 16px;
+}
