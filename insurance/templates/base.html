@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aegis Auto</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:wght@300;400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'app_style.css' %}">
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    <header>
+        <div class="app-title">Aegis Auto &ndash; Insurance Pricing Estimation</div>
+        <nav class="app-navigation">
+            <a href="{% url 'login' %}">Login</a>
+            <a href="{% url 'register' %}">Sign Up</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock content %}
+    </main>
+</body>
+
+</html>

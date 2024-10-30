@@ -1,116 +1,13 @@
-{% load static %}
+{% extends "base.html" %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aegis Auto</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Orbitron:wght@400..900&display=swap"
-          rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+{% block body_class %}app-body-homepage{% endblock %}
 
-        body, html {
-            height: 100%;
-            font-family: Arial, sans-serif;
-        }
-
-        .amatic-sc-regular {
-            font-family: "Amatic SC", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
-
-        .amatic-sc-bold {
-            font-family: "Amatic SC", sans-serif;
-            font-weight: 700;
-            font-style: normal;
-        }
-
-        .background {
-            background-image: url("{% static 'images/main.jpg' %}");
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            color: black;
-            text-align: center;
-        }
-
-        header {
-            padding: 20px;
-            font-size: 4rem;
-            font-weight: bold;
-            text-align: center;
-            position: fixed;
-            left: 0;
-            top: 0;
-        }
-
-
-        .info {
-            padding: 40px;
-            background: rgba(0, 0, 0, 0.0);
-            margin: 0 auto;
-            width: 30%;
-            border-radius: 10px;
-            position: fixed;
-            left: 100px;
-            top: 150px;
-            text-align: left;
-            font-size: 2rem;
-        }
-
-        button {
-            margin-top: 20px;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            background-color: #007bff;
-            border: none;
-            border-radius: 5px;
-            color: white;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .right {
-            position: fixed;
-            right: 0px;
-            top: 0px;
-        }
-
-        .info button:hover {
-            background-color: #0056b3;
-        }
-    </style>
-</head>
-<body>
-<div class="background">
-    <header class="amatic-sc-bold">
-        Aegis Auto
-        <div class="right">
-            <button onclick="window.location.href='{% url 'login' %}'">Login</button>
-            <button onclick="window.location.href='{% url 'register' %}'">Register</button>
-        </div>
-    </header>
-
-    <div class="info amatic-sc-regular">
-        <h2>About Our App</h2>
-        <p>Our insurance app helps you quickly and easily get insurance quotes tailored to your needs.
-            Find the best plans, compare prices,
-            and secure your future today...</p>
-        <button onclick="window.location.href='{% url 'insurance_pricing' %}'">Check Price</button>
+{% block content %}
+<div class="app-main-homepage-inner">
+    <div class="app-main-homepage-about">
+        <h2>About Us</h2>
+        At <em>Aegis Auto</em> we are dedicated to providing reliable and affordable car insurance tailored to meet your needs. With years of experience in the industry, our mission is to protect you on the road while delivering exceptional customer service.
     </div>
+    <a href="{% url 'insurance_pricing' %}" class="app-button-accent" style="align-self: center;">Check Vehicle Pricing</a>
 </div>
-</body>
-</html>
+{% endblock content %}
