@@ -21,6 +21,13 @@ header {
     padding: 0 16px;
 }
 
+.app-header-top-row {
+    display: flex;
+    flex-grow: 1;
+    align-self: stretch;
+    align-items: center;
+}
+
 input, button {
     font-family: Inter, Arial, Helvetica, sans-serif;
 }
