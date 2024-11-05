@@ -70,7 +70,7 @@ def reset_password(request):
                 messages.success(request, "A password reset link has been sent to your email.")
             else:
                 messages.error(request, "No user is associated with this email address.")
-            return redirect('login')
+        return render(request, 'password_reset_info.html')
     else:
         form = PasswordResetForm()
-    return render(request, 'reset_password.html', {'form': form})
+    return render(request, 'password_reset.html', {'form': form})
