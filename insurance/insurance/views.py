@@ -21,8 +21,7 @@ def insurance_pricing_view(request):
     else:
         form = InsuranceFormForm()
 
-    return render(request, 'input.html', {'form': form})
-
+    return render(request, 'estimation_form.html', {'form': form})
 
 def success_view(request):
     return render(request, 'success.html')

@@ -4,12 +4,27 @@ from django.db import models
 class InsuranceForm(models.Model):
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    gender = models.CharField(max_length=10, choices=[('male', 'Male'), ('female', 'Female')])
+    gender = models.CharField(
+        max_length=10,
+        choices=[('male', 'Male'), ('female', 'Female')],
+        blank=False,
+        default='male'
+    )
     age = models.IntegerField()
-    marital_status = models.CharField(max_length=10, choices=[('single', 'Single'), ('married', 'Married')])
-    children = models.IntegerField(null=True, blank=True)
+    marital_status = models.CharField(
+        max_length=10, 
+        choices=[('single', 'Single'), ('married', 'Married')],
+        blank=False,
+        default='single'
+    )
+    children = models.IntegerField(blank=False, default=0)
     income = models.CharField(max_length=100)
-    employment = models.CharField(max_length=15, choices=[('unemployed', 'Unemployed'), ('employed', 'Employed')])
+    employment = models.CharField(
+        max_length=15, 
+        choices=[('unemployed', 'Unemployed'), ('employed', 'Employed')],
+        blank=False,
+        default='unemployed'
+    )
     disability = models.BooleanField(default=False)
 
     make = models.CharField(max_length=100)

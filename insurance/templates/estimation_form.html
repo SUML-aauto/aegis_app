@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form method="POST" action="{% url 'insurance_pricing' %}" class="app-main-inner">
+        {% csrf_token %}
+
+        {% if form.errors %}
+            <div class="app-form-errors">
+            {% for error in form.non_field_errors %}
+                <div class="app-form-error-line">{{ error }}</div>
+            {% endfor %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="app-form-error-line">{{ field.label }}: {{ error }}</div>
+                {% endfor %}
+            {% endfor %}
+            </div>
+        {% endif %}
+
+        <div class="app-main-tiled">
+            <section class="app-tile-section">
+                <h2>Customer Info</h2>
+                
+                <div class="app-form-block">
+                    <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+                    <div class="app-form-value">
+                        {{ form.first_name }}
+                    </div>
+                    
+                    <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+                    <div class="app-form-value">
+                        {{ form.last_name }}
+                    </div>
+
+                    <label for="{{ form.gender.id_for_label }}">Gender:</label>
+                    <div class="app-form-value app-form-value-radio">
+                        {{ form.gender }}
+                    </div>
+
+                    <label for="{{ form.age.id_for_label }}">Age:</label>
+                    <div class="app-form-value">
+                        {{ form.age }}
+                    </div>
+
+                    <label for="{{ form.marital_status.id_for_label }}">Marital Status:</label>
+                    <div class="app-form-value app-form-value-radio">
+                        {{ form.marital_status }}
+                    </div>
+                    
+                    <label for="{{ form.children.id_for_label }}">Number of Children:</label>
+                    <div class="app-form-value">
+                        {{ form.children }}
+                    </div>
+                    
+                    <label for="{{ form.income.id_for_label }}">Income:</label>
+                    <div class="app-form-value">
+                        {{ form.income }}
+                    </div>
+
+                    <label for="{{ form.employment.id_for_label }}">Employment:</label>
+                    <div class="app-form-value app-form-value-radio">
+                        {{ form.employment }}
+                    </div>
+
+                    <label for="{{ form.disability.id_for_label }}">Disability:</label>
+                    <div class="app-form-value">
+                        {{ form.disability }}
+                    </div>
+                </div>
+            </section>
+
+            <section class="app-tile-section">
+                <h2>Vehicle Info</h2>
+            
+                <div class="app-form-block">
+                    <label for="{{ form.make.id_for_label }}">Make:</label>
+                    <div class="app-form-value">
+                        {{ form.make }}
+                    </div>
+
+                    <label for="{{ form.model.id_for_label }}">Model:</label>
+                    <div class="app-form-value">
+                        {{ form.model }}
+                    </div>
+
+                    <label for="{{ form.year.id_for_label }}">Manufacturing Year:</label>
+                    <div class="app-form-value">
+                        {{ form.year }}
+                    </div>
+
+                    <label for="{{ form.fuel_type.id_for_label }}">Fuel Type:</label>
+                    <div class="app-form-value">
+                        {{ form.fuel_type }}
+                    </div>
+                    
+                    <label for="{{ form.engine_power.id_for_label }}">Engine Power:</label>
+                    <div class="app-form-value">
+                        {{ form.engine_power }}
+                        <div class="app-form-unit">hp</div>
+                    </div>
+                    
+                    <label for="{{ form.body_type.id_for_label }}">Body Type:</label>
+                    <div class="app-form-value">
+                        {{ form.body_type }}
+                    </div>
+                    
+                    <label for="{{ form.engine_volume.id_for_label }}">Engine Volume:</label>
+                    <div class="app-form-value">
+                        {{ form.engine_volume }}
+                        <div class="app-form-unit">cm<sup>3</sup></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="app-tile-section">
+                <h2>Driving History</h2>
+
+                <div class="app-form-block">
+                    <label for="{{ form.driving_experience.id_for_label }}">Driving Experience:</label>
+                    <div class="app-form-value">
+                        {{ form.driving_experience }}
+                        <div class="app-form-unit">years</div>
+                    </div>
+
+                    <label for="{{ form.vehicles_in_family.id_for_label }}">Vehicles in Family:</label>
+                    <div class="app-form-value">
+                        {{ form.vehicles_in_family }}
+                    </div>
+
+                    <label for="{{ form.accidents.id_for_label }}">Number of Accidents:</label>
+                    <div class="app-form-value">
+                        {{ form.accidents }}
+                    </div>
+                </div>
+            </section>
+
+            <section class="app-tile-section">
+                <h2>Current Vehicle State</h2>
+                
+                <div class="app-form-block">
+                    <label for="{{ form.mileage.id_for_label }}">Mileage:</label>
+                    <div class="app-form-value">
+                        {{ form.mileage }}
+                        <div class="app-form-unit">km</div>
+                    </div>
+                    
+                    <label for="{{ form.vehicle_accidents.id_for_label }}">Number of Accidents:</label>
+                    <div class="app-form-value">
+                        {{ form.vehicle_accidents }}
+                    </div>
+                    
+                    <label for="{{ form.market_value.id_for_label }}">Market Value:</label>
+                    <div class="app-form-value">
+                        {{ form.market_value }}
+                        <div class="app-form-unit">$</div>
+                    </div>
+                    
+                    <label for="{{ form.total_owners.id_for_label }}">Total Owners:</label>
+                    <div class="app-form-value">
+                        {{ form.total_owners }}
+                    </div>
+
+                    <label for="{{ form.dashcam.id_for_label }}">Has Dashcam:</label>
+                    <div class="app-form-value">
+                        {{ form.dashcam }}
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <button class="app-button app-button-accent app-button-submit" type="submit" style="align-self: flex-end">Submit</button>
+    </form>
+
+{% endblock content %}
