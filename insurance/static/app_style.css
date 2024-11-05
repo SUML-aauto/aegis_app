@@ -25,9 +25,50 @@ input, button {
     font-family: Inter, Arial, Helvetica, sans-serif;
 }
 
-button, .app-button-accent {
+.app-button {
     font-size: 16px;
+    text-decoration: none;
+    color: black;
+    padding: 12px;
+    margin: 0;
+    border-radius: 8px;
+    transition: background-color 0.25s ease-in-out;
+}
+
+.app-button:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@property --app-gradient-color-1 {
+    syntax: '<color>';
+    initial-value: black;
+    inherits: false;
+}
+
+@property --app-gradient-color-2 {
+    syntax: '<color>';
+    initial-value: white;
+    inherits: false;
+}
+
+.app-button-accent {
     font-weight: 300;
+
+    --app-gradient-color-1: #561d60;
+    --app-gradient-color-2: #561d60;
+    transition: --app-gradient-color-1 0.25s ease-in-out, --app-gradient-color-2 0.25s ease-in-out;
+
+    appearance: none;
+    border: none;
+    background: linear-gradient(45deg, var(--app-gradient-color-1), var(--app-gradient-color-2));
+    color: white;
+    text-decoration: none;
+}
+
+.app-button-accent:hover {
+    background: linear-gradient(45deg, var(--app-gradient-color-1), var(--app-gradient-color-2));
+    --app-gradient-color-1: #7b288a;
+    --app-gradient-color-2: #95229d;
 }
 
 .app-title {
@@ -166,43 +207,6 @@ input[type=radio]:checked::after {
     padding-left: 8px;
 }
 
-@property --app-gradient-color-1 {
-    syntax: '<color>';
-    initial-value: black;
-    inherits: false;
-}
-
-@property --app-gradient-color-2 {
-    syntax: '<color>';
-    initial-value: white;
-    inherits: false;
-}
-
-.app-button-accent {
-    --app-gradient-color-1: #561d60;
-    --app-gradient-color-2: #561d60;
-    transition: --app-gradient-color-1 0.25s ease-in-out, --app-gradient-color-2 0.25s ease-in-out;
-
-    appearance: none;
-    padding: 0;
-    margin: 0;
-    border: none;
-    background: linear-gradient(45deg, var(--app-gradient-color-1), var(--app-gradient-color-2));
-    color: white;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-}
-
-.app-button-submit {
-    align-self: flex-end;
-}
-
-.app-button-accent:hover {
-    --app-gradient-color-1: #7b288a;
-    --app-gradient-color-2: #95229d;
-}
-
 @media screen and (max-width: 780px) {
     main {
         align-items: stretch;
@@ -292,4 +296,10 @@ input[type=radio]:checked::after {
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.app-form-buttons-row {
+    display: flex;
+    gap: 8px;
+    justify-content: flex-end;
 }

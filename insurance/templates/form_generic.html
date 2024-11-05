@@ -21,8 +21,11 @@
                 {{ field }}
                 {{ field.help_text }}
             {% endfor %}
+            
+            <div class="app-form-buttons-row">
+                <button type="submit" class="app-button app-button-accent app-button-submit">{% block form_submit_text %}Submit{% endblock form_submit_text %}</button>
+            </div>
         </section>
     </div>
-    <button type="submit" class="app-button-submit app-button-accent">{% block form_submit_text %}Submit{% endblock form_submit_text %}</button>
 </form>
 {% endblock content %}

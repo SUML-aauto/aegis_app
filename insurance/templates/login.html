@@ -27,9 +27,10 @@
                 </div>
             </div>
             
-            <a href="{% url 'reset_password' %}" class="app-button-accent" style="align-self: center;">Reset password</a>
-
-            <button type="submit" class="app-button-submit app-button-accent">Login</button>
+            <div class="app-form-buttons-row">
+                <a href="{% url 'reset_password' %}" class="app-button" style="align-self: center;">Reset password</a>
+                <button type="submit" class="app-button app-button-accent app-button-submit">Login</button>
+            </div>
         </section>
     </div>
 </form>
