@@ -10,24 +10,26 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat+Alternates:wght@300;400&display=swap"
+          rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'app_style.css' %}">
 </head>
 
 <body class="{% block body_class %}{% endblock %}">
-    <header>
-        {% block back_button %}<a class="app-back-button" href="{% url 'index' %}">Back</a>{% endblock back_button %}
-        <div class="app-title">Aegis Auto &ndash; Insurance Pricing Estimation</div>
-        <nav class="app-navigation">
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Sign Up</a>
-        </nav>
-    </header>
+<header>
+    {% block back_button %}<a class="app-back-button" href="{% url 'index' %}">Back</a>{% endblock back_button %}
+    <div class="app-title">Aegis Auto &ndash; Insurance Pricing Estimation</div>
+    <nav class="app-navigation">
+        <a href="{% url 'login' %}">Login</a>
+        <a href="{% url 'register' %}">Sign Up</a>
+        <a href="{% url 'contact_info' %}">Contact us</a>
+    </nav>
+</header>
 
-    <main>
-        {% block content %}{% endblock content %}
-    </main>
+<main>
+    {% block content %}{% endblock content %}
+</main>
 </body>
 
 </html>
