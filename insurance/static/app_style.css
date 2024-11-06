@@ -263,6 +263,16 @@ input[type=radio]:checked::after {
     background-position: top;
 }
 
+@media screen and (max-width: 780px) {
+    .app-body-homepage {
+        background: 
+            linear-gradient(180deg, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0.8)),
+            url(images/main.jpg);
+        background-size: cover;
+        background-position: top right;
+    }
+}
+
 .app-main-homepage-inner {
     max-width: 384px;
     align-self: flex-start;
