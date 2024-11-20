@@ -1,5 +1,5 @@
 services:
   aegis_app:
-    build: .
+    image: ghcr.io/suml-aauto/aegis_app:master
     ports:
       - "4000:8080"
