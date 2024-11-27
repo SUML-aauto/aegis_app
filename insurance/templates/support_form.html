@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form method="POST" class="app-main-inner">
+    <div class="app-main-tiled-single-column">
+        <section class="app-tile-section">
+            <h2 style="text-align: center; color: #0f131c; font-size: 24px; font-weight: 300;">Contact Support</h2>
+            <div class="app-form-root">
+                {% if form.errors %}
+                    <div class="app-form-errors">
+                    {% for field, errors in form.errors.items %}
+                        {% for error in errors %}
+                            <div class="app-form-error-line"> {{ error }} </div>
+                        {% endfor %}
+                    {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="app-form-block">
+                    {% csrf_token %}
+
+                    <!-- Name Field with visible box and same size as email -->
+                    <label for="name" style="font-weight: normal; color: #0f131c;">Name:</label>
+                    <div class="app-form-value">
+                        <input type="text" name="name" id="id_name" class="form-control"  value="" style="border: 1px solid #555; padding: 10px; border-radius: 4px; width: 100%; font-size: 14px; margin-top: 5px;">
+                    </div>
+
+                    <!-- Email Field with consistent size and border color -->
+                    <label for="email" style="font-weight: normal; color: #0f131c;">E-mail:</label>
+                    <div class="app-form-value">
+                        <input type="email" name="email" id="id_email" class="form-control" value="" style="border: 1px solid #555; padding: 10px; border-radius: 4px; width: 100%; font-size: 14px; margin-top: 5px;">
+                    </div>
+
+
+                    <!-- Message Field with same box styling -->
+                    <label for="message" style="font-weight: normal; color: #0f131c;">Message:</label>
+                    <div class="app-form-value">
+                        {{ form.message }}
+                    </div>
+                </div>
+            </div>
+
+            <div class="app-form-buttons-row">
+                <!-- Submit button only -->
+                <button type="submit" class="app-button app-button-accent app-button-submit" style="font-size: 16px; padding: 12px; margin: 0; border-radius: 8px; background: linear-gradient(45deg, #561d60, #561d60); color: white; border: none; transition: background 0.25s ease-in-out;">Submit</button>
+            </div>
+        </section>
+    </div>
+</form>
+{% endblock content %}

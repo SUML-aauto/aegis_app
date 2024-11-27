@@ -8,7 +8,6 @@ body {
     background: #ccc;
     font-size: 12px;
     min-height: 100%;
-
     display: flex;
     flex-direction: column;
 }
@@ -46,25 +45,12 @@ input, button {
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-@property --app-gradient-color-1 {
-    syntax: '<color>';
-    initial-value: black;
-    inherits: false;
-}
-
-@property --app-gradient-color-2 {
-    syntax: '<color>';
-    initial-value: white;
-    inherits: false;
-}
-
+/* Feedback Button Styles */
 .app-button-accent {
     font-weight: 300;
-
     --app-gradient-color-1: #561d60;
     --app-gradient-color-2: #561d60;
     transition: --app-gradient-color-1 0.25s ease-in-out, --app-gradient-color-2 0.25s ease-in-out;
-
     appearance: none;
     border: none;
     background: linear-gradient(45deg, var(--app-gradient-color-1), var(--app-gradient-color-2));
@@ -265,7 +251,7 @@ input[type=radio]:checked::after {
 
 @media screen and (max-width: 780px) {
     .app-body-homepage {
-        background: 
+        background:
             linear-gradient(180deg, rgba(255, 255, 255, 1.0), rgba(255, 255, 255, 0.8)),
             url(images/main.jpg);
         background-size: cover;
@@ -306,7 +292,7 @@ input[type=radio]:checked::after {
 }
 
 .app-navigation > a:hover {
-    background: rgba(0, 0, 0, 0.1);
+    background: rgb(15, 19, 28);
 }
 
 .app-form-errors {

@@ -130,6 +130,7 @@ AUTHENTICATION_BACKENDS = ['accounts.backends.EmailBackend', 'django.contrib.aut
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+ADMIN_EMAIL = 'admin@example.com'  # The email address where support messages will be sent
 
 
 
