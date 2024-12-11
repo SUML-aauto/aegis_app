@@ -6,5 +6,4 @@ urlpatterns = [
     path('support/', views.support_form, name='support_form'),  # Support form page
     path('support-success/', views.support_form_success, name='support_form_success'),  # Success page for support form
     path('insurance-pricing/', views.insurance_pricing_view, name='insurance_pricing'),  # Insurance pricing page
-    path('success/', views.success_view, name='success'),  # General success page (if needed)
 ]

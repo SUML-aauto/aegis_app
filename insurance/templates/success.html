@@ -93,17 +93,39 @@
     </style>
 </head>
 <body>
-<header>
-    <a href="javascript:history.back()" class="back-link">←</a>
-    Aegis Auto – Insurance Pricing Results
-</header>
-
 <div class="container">
 
     <h2>Estimation Results</h2>
     <p class="description">
-        Insuring this vehicle will fall under the pricing category LR_X (High-Value Vehicles with Liability Risk).
     </p>
+    {% if may_have_claim %}
+    <table class="table">
+        <tr>
+            <th>Insurance Type</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>Liability Insurance</td>
+            <td>$900/yr</td>
+        </tr>
+        <tr>
+            <td>Premium Liability Insurance</td>
+            <td>$1500/yr</td>
+        </tr>
+        <tr>
+            <td>Repair Insurance</td>
+            <td>$400/yr</td>
+        </tr>
+        <tr>
+            <td>Premium Repair Insurance</td>
+            <td>$600/yr</td>
+        </tr>
+        <tr>
+            <td>Theft Insurance</td>
+            <td>$900/yr</td>
+        </tr>
+    </table>
+    {% else %}
     <table class="table">
         <tr>
             <th>Insurance Type</th>
@@ -130,6 +152,7 @@
             <td>$820/yr</td>
         </tr>
     </table>
+    {% endif %}
 </div>
 
 </body>

@@ -2,11 +2,10 @@ from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.conf import settings
 from insurance.forms import InsuranceFormForm, SupportForm
-
+from insurance.aihelper import predict_insurance_claim
 
 def index(request):
     return render(request, 'index.html')
-
 
 def insurance_pricing_view(request):
     """
@@ -15,22 +14,26 @@ def insurance_pricing_view(request):
     if request.method == 'POST':
         form = InsuranceFormForm(request.POST)
         if form.is_valid():
-            print('Form data:', form.cleaned_data)
+            data = form.cleaned_data
+            print('Form data:', data)
             form.save()
-            return redirect('success')  # Redirect to success page
+
+            may_have_claim = predict_insurance_claim(data={
+                'Make': data['make'],
+                'Fuel Type': data['fuel_type'],
+                'Engine Power (HP)': data['engine_power'],
+                'Driving Experience': data['driving_experience'],
+                'INCOME': int(data['income']),
+                'GENDER': 'M' if data['gender'] == 'male' else 'F',
+                'CAR_TYPE': data['body_type']
+            })
+            return render(request, 'success.html', {'may_have_claim': may_have_claim})  # Redirect to success page
         else:
             print('Form errors:', form.errors)  # Log errors for debugging
     else:
         form = InsuranceFormForm()  # Render an empty form for GET requests
 
     return render(request, 'estimation_form.html', {'form': form})
-
-
-def success_view(request):
-    """
-    View for rendering a generic success page.
-    """
-    return render(request, 'success.html')
 
 
 def support_form(request):
