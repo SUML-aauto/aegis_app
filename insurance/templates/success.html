@@ -98,61 +98,14 @@
     <h2>Estimation Results</h2>
     <p class="description">
     </p>
-    {% if may_have_claim %}
     <table class="table">
+        {% for key, value in insurance_pricing.items %}
         <tr>
-            <th>Insurance Type</th>
-            <th>Price</th>
+            <th>{{key}}</th>
+            <th>${{value}}/yr</th>
         </tr>
-        <tr>
-            <td>Liability Insurance</td>
-            <td>$900/yr</td>
-        </tr>
-        <tr>
-            <td>Premium Liability Insurance</td>
-            <td>$1500/yr</td>
-        </tr>
-        <tr>
-            <td>Repair Insurance</td>
-            <td>$400/yr</td>
-        </tr>
-        <tr>
-            <td>Premium Repair Insurance</td>
-            <td>$600/yr</td>
-        </tr>
-        <tr>
-            <td>Theft Insurance</td>
-            <td>$900/yr</td>
-        </tr>
+        {% endfor %}
     </table>
-    {% else %}
-    <table class="table">
-        <tr>
-            <th>Insurance Type</th>
-            <th>Price</th>
-        </tr>
-        <tr>
-            <td>Liability Insurance</td>
-            <td>$480/yr</td>
-        </tr>
-        <tr>
-            <td>Premium Liability Insurance</td>
-            <td>$960/yr</td>
-        </tr>
-        <tr>
-            <td>Repair Insurance</td>
-            <td>$250/yr</td>
-        </tr>
-        <tr>
-            <td>Premium Repair Insurance</td>
-            <td>$500/yr</td>
-        </tr>
-        <tr>
-            <td>Theft Insurance</td>
-            <td>$820/yr</td>
-        </tr>
-    </table>
-    {% endif %}
 </div>
 
 </body>

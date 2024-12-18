@@ -2,7 +2,8 @@ from django.shortcuts import redirect, render
 from django.core.mail import EmailMessage
 from django.conf import settings
 from insurance.forms import InsuranceFormForm, SupportForm
-from insurance.aihelper import predict_insurance_claim
+from insurance.aihelper import predict_insurance_pricing
+from datetime import datetime
 
 def index(request):
     return render(request, 'index.html')
@@ -18,16 +19,35 @@ def insurance_pricing_view(request):
             print('Form data:', data)
             form.save()
 
-            may_have_claim = predict_insurance_claim(data={
+            current_year = datetime.now().year
+
+            pricing = predict_insurance_pricing(data={
                 'Make': data['make'],
-                'Fuel Type': data['fuel_type'],
+                'Model': data['model'],
                 'Engine Power (HP)': data['engine_power'],
+                'Mileage (km)': data['mileage'],
+                'Number of Accidents': data['vehicle_accidents'],
+                'Market Value ($)': int(data['market_value']),
+                'Total Owners': data['total_owners'],
+                'Has Dashcam': int(data['dashcam']),
+                'Vehicles in Family': data['vehicles_in_family'],
                 'Driving Experience': data['driving_experience'],
+                'CAR_AGE': current_year - data['year'],
+                'AGE': data['age'],
+                'HOMEKIDS': data['children'],
                 'INCOME': int(data['income']),
-                'GENDER': 'M' if data['gender'] == 'male' else 'F',
-                'CAR_TYPE': data['body_type']
             })
-            return render(request, 'success.html', {'may_have_claim': may_have_claim})  # Redirect to success page
+
+            params = {
+                'insurance_pricing': {
+                    'Liability Insurance': int(pricing['Liability Insurance']),
+                    'Theft Insurance': int(pricing['Theft Insurance']),
+                    'Premium Insurance': int(pricing['Premium Insurance']),
+                    'Repair Insurance': int(pricing['Repair Insurance']),
+                    'Premium Repair Insurance': int(pricing['Premium Repair Insurance']),
+                }
+            }
+            return render(request, 'success.html', params)
         else:
             print('Form errors:', form.errors)  # Log errors for debugging
     else:

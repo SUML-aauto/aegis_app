@@ -18,7 +18,7 @@ class InsuranceForm(models.Model):
         default='single'
     )
     children = models.IntegerField(blank=False, default=0)
-    income = models.CharField(max_length=100)
+    income = models.IntegerField()
     employment = models.CharField(
         max_length=15, 
         choices=[('unemployed', 'Unemployed'), ('employed', 'Employed')],
@@ -33,7 +33,7 @@ class InsuranceForm(models.Model):
     fuel_type = models.CharField(max_length=20)
     engine_power = models.IntegerField(null=True, blank=True)
     body_type = models.CharField(max_length=50)
-    engine_volume = models.DecimalField(max_digits=5, decimal_places=2)
+    engine_volume = models.DecimalField(max_digits=6, decimal_places=2)
 
     driving_experience = models.IntegerField()
     vehicles_in_family = models.IntegerField()
