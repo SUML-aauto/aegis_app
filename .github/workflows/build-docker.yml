@@ -60,11 +60,12 @@ jobs:
     - name: Run test suite
       id: run-test-suite
       run:
-        python -m coverage run /appli/manage.py test
+        python -m coverage run --rcfile=/appli/.coveragerc --data-file=$GITHUB_WORKSPACE/.coverage manage.py test
+      working-directory: /appli
     - name: Print code coverage results
       id: print-coverage
       run:
-        python -m coverage report -m
+        python -m coverage report --rcfile=/appli/.coveragerc -m
 
   deploy:
     runs-on: ubuntu-latest
