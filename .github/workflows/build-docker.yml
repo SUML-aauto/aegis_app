@@ -1,8 +1,6 @@
 name: Create and publish a Docker image
 
-on:
-  push:
-    branches: ['master']
+on: push
 
 env:
   REGISTRY: ghcr.io
@@ -50,9 +48,28 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
-  deploy:
+  test:
     runs-on: ubuntu-latest
     needs: build-and-push-image
+    container: 
+      image: 'ghcr.io/suml-aauto/aegis_app:sha-${{ github.sha }}'
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+    - name: Run test suite
+      id: run-test-suite
+      run:
+        python -m coverage run /appli/manage.py test
+    - name: Print code coverage results
+      id: print-coverage
+      run:
+        python -m coverage report -m
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build-and-push-image, test]
+    if: github.ref == 'refs/heads/master'
     environment:
       name: 'production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
