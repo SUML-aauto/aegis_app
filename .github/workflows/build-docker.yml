@@ -34,6 +34,12 @@ jobs:
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=schedule
+            type=ref,event=branch
+            type=ref,event=tag
+            type=ref,event=pr
+            type=sha,format=long
       
       - name: Build and push Docker image
         id: push
@@ -58,4 +64,4 @@ jobs:
           app-name: 'aegisauto'
           slot-name: 'production'
           publish-profile: ${{ secrets.AzureAppService_PublishProfile_d5dddd9793404f3799cf0c2c08370bd6 }}
-          images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_c8e2d1534b854de29adf4841f7dacfb9 }}/suml-aauto/aegis_app:sha256:${{ github.sha }}'
+          images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_c8e2d1534b854de29adf4841f7dacfb9 }}/suml-aauto/aegis_app:sha-${{ github.sha }}'
