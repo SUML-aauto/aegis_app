@@ -49,19 +49,20 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-  deploy-image:
+
+  deploy:
     runs-on: ubuntu-latest
     needs: build-and-push-image
     environment:
-        name: 'production'
-        url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
 
     steps:
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: 'aegisauto'
-          slot-name: 'production'
-          publish-profile: ${{ secrets.AzureAppService_PublishProfile_d5dddd9793404f3799cf0c2c08370bd6 }}
-          images: 'ghcr.io/${{ secrets.AzureAppService_ContainerUsername_c8e2d1534b854de29adf4841f7dacfb9 }}/suml-aauto/aegis_app:sha-${{ github.sha }}'
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'aegisauto'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_21e5fe4307234cb0b7113fe69177e60a }}
+        images: 'ghcr.io/suml-aauto/aegis_app:sha-${{ github.sha }}'
