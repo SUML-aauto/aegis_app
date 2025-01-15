@@ -82,5 +82,5 @@ jobs:
       with:
         app-name: 'aegisauto'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_21e5fe4307234cb0b7113fe69177e60a }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile }}
         images: 'ghcr.io/suml-aauto/aegis_app:sha-${{ github.sha }}'

@@ -1,0 +1,7 @@
+name: Insurance Pricing Estimation
+python_env: pytohn_env.yaml
+entry_points:
+  main:
+    parameters:
+      dataset_file: path
+    command: 'python mlflow_train.py {dataset_file}'
