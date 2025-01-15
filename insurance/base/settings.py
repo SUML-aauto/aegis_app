@@ -132,5 +132,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 ADMIN_EMAIL = 'admin@example.com'  # The email address where support messages will be sent
 
-CSRF_TRUSTED_ORIGINS = ['https://aegisauto-gbcbbhafd0b3bqg2.polandcentral-01.azurewebsites.net']
+CSRF_TRUSTED_ORIGINS = ['https://aegisauto.azurewebsites.net']
 
