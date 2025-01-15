@@ -316,3 +316,11 @@ input[type=radio]:checked::after {
     gap: 8px;
     justify-content: flex-end;
 }
+
+table td, table th {
+    padding: 4px;
+}
+
+tbody th {
+    text-align: left;
+}
