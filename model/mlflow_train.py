@@ -1,3 +1,4 @@
+import sys
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble import GradientBoostingRegressor
@@ -10,7 +11,7 @@ import numpy as np
 import mlflow
 from mlflow.models import infer_signature
 
-file_path = 'data_set.csv'
+file_path = sys.argv[1]
 data = pd.read_csv(file_path, delimiter=';', on_bad_lines='skip')
 
 class InsuranceModel(mlflow.pyfunc.PythonModel):
@@ -102,7 +103,7 @@ def build_insurance_model():
         avg_diff = np.mean(y_pred_clipped - y_test)
 
         model_obj.models[insurance] = model
-        
+
         mlflow.log_metric(insurance.replace(" ", "_") + "_MSE", mse)
         mlflow.log_metric(insurance.replace(" ", "_") + "_RMSE", rmse)
         mlflow.log_metric(insurance.replace(" ", "_") + "_AvgDiff", avg_diff)
@@ -161,8 +162,8 @@ single_entity = {
 }
 
 with mlflow.start_run():
-    model = InsuranceModel()
+    build_insurance_model()
 
-for insurance, metrics in model.metrics.items():
-    print(
-        f"{insurance} - MSE: {metrics['MSE']:.2f}, RMSE: {metrics['RMSE']:.2f}, Average Difference (Predicted - Real): {metrics['Average Difference (Predicted - Real)']:.2f}")
+# for insurance, metrics in model.metrics.items():
+#     print(
+#        f"{insurance} - MSE: {metrics['MSE']:.2f}, RMSE: {metrics['RMSE']:.2f}, Average Difference (Predicted - Real): {metrics['Average Difference (Predicted - Real)']:.2f}")

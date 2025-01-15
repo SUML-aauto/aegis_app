@@ -1,112 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estimation Results</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Orbitron:wght@400..900&display=swap"
-          rel="stylesheet">
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
 
+{% extends "base.html" %}
 
-        body {
-
-        }
-
-        header {
-            padding: 20px;
-            font-size: 4rem;
-            font-weight: bold;
-            text-align: center;
-            font-family: "Amatic SC", sans-serif;
-            font-weight: 700;
-        }
-
-        .container {
-            background-color: white;
-            padding: 30px;
-            max-width: 70%;
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            margin: auto;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            color: #333;
-        }
-
-        .description {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-
-        .table th,
-        .table td {
-            padding: 10px;
-            font-size: 1rem;
-            text-align: left;
-        }
-
-        .table th {
-            font-weight: bold;
-            color: #333;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .table td {
-            color: #555;
-        }
-
-        .back-link {
-            position: absolute;
-            left: 20px;
-            transform: translateY(-50%);
-            font-size: 2rem;
-            color: black;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-        }
-
-        .back-link:hover {
-            text-decoration: underline;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-
-    <h2>Estimation Results</h2>
-    <p class="description">
-    </p>
-    <table class="table">
-        {% for key, value in insurance_pricing.items %}
-        <tr>
-            <th>{{key}}</th>
-            <th>${{value}}/yr</th>
-        </tr>
-        {% endfor %}
-    </table>
+{% block content %}
+<div class="app-main-inner">
+    <div class="app-main-tiled-single-column">
+        <section class="app-tile-section">
+            <h2>Estimation Results</h2>
+            
+            <table class="table">
+                <tbody>
+                    {% for key, value in insurance_pricing.items %}
+                    <tr>
+                        <th>{{key}}</th>
+                        <td>${{value}}/yr</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </section>
+    </div>
 </div>
-
-</body>
-</html>
+{% endblock content %}

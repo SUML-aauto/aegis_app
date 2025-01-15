@@ -1,5 +1,5 @@
 name: Insurance Pricing Estimation
-python_env: pytohn_env.yaml
+python_env: python_env.yaml
 entry_points:
   main:
     parameters:
